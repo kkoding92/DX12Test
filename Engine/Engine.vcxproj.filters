@@ -7,6 +7,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{8fa15e65-0aba-4e84-bacd-473f8992ae40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\System">
+      <UniqueIdentifier>{099fae6b-ea7e-4c61-b15f-de5176efe874}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -18,6 +21,9 @@
     <ClInclude Include="EngineStdafx.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicDevice.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -28,6 +34,9 @@
     </ClCompile>
     <ClCompile Include="EngineStdafx.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicDevice.cpp">
+      <Filter>Engine\System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
