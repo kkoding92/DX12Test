@@ -9,7 +9,7 @@ public:
 	LPDIRECT3DDEVICE9 Get_GraphicDev(void) { return m_pGraphicDev; }
 
 public:
-	HRESULT		Ready_GraphicDevice(HWND hWnd, CGraphicDevice** ppDeviceClass);
+	HRESULT		Ready_GraphicDevice(HWND hWnd);
 
 	void		Render_Begin(D3DXCOLOR Color);
 	void		Render_End(void);

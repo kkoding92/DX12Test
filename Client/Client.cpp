@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "framework.h"
 #include "Client.h"
+#include "MainApp.h"
 
 #define MAX_LOADSTRING 100
 
@@ -10,6 +11,8 @@
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+
+HWND g_hWnd;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -41,6 +44,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 
     MSG msg;
+    CMainApp* pMainApp = new CMainApp;
+    if (nullptr != pMainApp)
+        pMainApp->Ready_MainApp();
 
     // 기본 메시지 루프입니다:
     while (true)
@@ -58,12 +64,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
 
        //게임로직 실행
-        Test();
+        pMainApp->Render_MainApp();
+       // Test();
     }
 
+    if (nullptr != pMainApp)
+    {
+        delete pMainApp;
+        pMainApp = nullptr;
+    }
     return (int) msg.wParam;
 }
-
 
 
 //
@@ -114,6 +125,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
+   g_hWnd = hWnd;
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 

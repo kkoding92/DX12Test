@@ -14,7 +14,7 @@ CGraphicDevice::~CGraphicDevice(void)
 	m_pSDK->Release();
 }
 
-HRESULT CGraphicDevice::Ready_GraphicDevice(HWND hWnd, CGraphicDevice** ppDeviceClass)
+HRESULT CGraphicDevice::Ready_GraphicDevice(HWND hWnd)
 {
 	m_pSDK = Direct3DCreate9(D3D_SDK_VERSION);
 	if (nullptr == m_pSDK)
@@ -60,8 +60,6 @@ HRESULT CGraphicDevice::Ready_GraphicDevice(HWND hWnd, CGraphicDevice** ppDevice
 	if (E_FAIL == m_pSDK->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, uFlag,
 		&Present_Parameters, &m_pGraphicDev))
 		return E_FAIL;
-
-	*ppDeviceClass = this;
 
 	return S_OK;
 }
