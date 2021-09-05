@@ -21,4 +21,5 @@ using namespace std;
 #pragma comment(lib, "winmm")
 
 #include "GraphicDevice.h"
-void Test();
+
+//void Test();

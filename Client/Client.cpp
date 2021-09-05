@@ -44,6 +44,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CLIENT));
 
     MSG msg;
+
     CMainApp* pMainApp = new CMainApp;
     if (nullptr != pMainApp)
         pMainApp->Ready_MainApp();
@@ -64,8 +65,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
 
        //게임로직 실행
-        pMainApp->Render_MainApp();
-       // Test();
+       pMainApp->Render_MainApp();
     }
 
     if (nullptr != pMainApp)
@@ -73,6 +73,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         delete pMainApp;
         pMainApp = nullptr;
     }
+
     return (int) msg.wParam;
 }
 
@@ -117,8 +118,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   RECT	rc{ 0, 0, 800, 600 };
+
+   AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
+
+   // 윈도우 창  = rc의 크기 + 기본 설정 크기 + 메뉴 바 사이즈 크기
+   HWND hWnd = CreateWindowW(szWindowClass, L"Test", WS_OVERLAPPEDWINDOW,
+       200, 200, // 생성하고자 하는 윈도우 창의 위치 (left, top)
+       rc.right - rc.left, rc.bottom - rc.top, // 윈도우 창이 생성되는 가로 길이 및 세로 길이
+       nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {

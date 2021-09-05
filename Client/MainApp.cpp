@@ -35,6 +35,10 @@ void CMainApp::Render_MainApp(void)
 {
 	m_pDeviceClass->Render_Begin(D3DXCOLOR(0.f, 0.f, 1.f, 1.f));
 
+	// 그릴 것들 삽입
+	//배경->Render();
+	//캐릭터->Render();
+
 	m_pDeviceClass->Render_End();
 }
 
