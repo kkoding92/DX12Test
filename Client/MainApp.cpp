@@ -9,11 +9,7 @@ CMainApp::CMainApp(void)
 
 CMainApp::~CMainApp(void)
 {
-	if (nullptr != m_pDeviceClass)
-	{
-		delete m_pDeviceClass;
-		m_pDeviceClass = nullptr;
-	}
+	Release_MainApp();
 }
 
 HRESULT CMainApp::Ready_MainApp(void)
@@ -31,6 +27,15 @@ HRESULT CMainApp::Ready_MainApp(void)
 	return S_OK;
 }
 
+int CMainApp::Update_MainApp(void)
+{
+	return 0;
+}
+
+void CMainApp::LateUpdate_MainApp(void)
+{
+}
+
 void CMainApp::Render_MainApp(void)
 {
 	m_pDeviceClass->Render_Begin(D3DXCOLOR(0.f, 0.f, 1.f, 1.f));
@@ -41,6 +46,16 @@ void CMainApp::Render_MainApp(void)
 
 	m_pDeviceClass->Render_End();
 }
+
+void CMainApp::Release_MainApp(void)
+{
+	if (nullptr != m_pDeviceClass)
+	{
+		delete m_pDeviceClass;
+		m_pDeviceClass = nullptr;
+	}
+}
+
 
 HRESULT CMainApp::SetUp_Setting(LPDIRECT3DDEVICE9* ppGraphicDev)
 {

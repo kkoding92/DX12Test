@@ -64,8 +64,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
 
-       //게임로직 실행
-       pMainApp->Render_MainApp();
+        //게임로직 실행
+        pMainApp->Update_MainApp();
+        pMainApp->LateUpdate_MainApp();
+        pMainApp->Render_MainApp();
     }
 
     if (nullptr != pMainApp)
