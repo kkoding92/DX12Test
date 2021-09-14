@@ -10,6 +10,7 @@
 #include <ctime>
 #include <tchar.h>
 #include <process.h>
+#include <string>
 using namespace std;
 
 #include <d3d9.h>
@@ -20,6 +21,13 @@ using namespace std;
 #pragma comment(lib, "dxguid")
 #pragma comment(lib, "winmm")
 
+typedef struct tagTextureInfomation
+{
+	LPDIRECT3DTEXTURE9 pTexture;
+	D3DXIMAGE_INFO tImageInfo;
+}TEXINFO;
+
 #include "GraphicDevice.h"
+#include "Texture_Manager.h"
 
 //void Test();

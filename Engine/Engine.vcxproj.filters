@@ -10,6 +10,12 @@
     <Filter Include="Engine\System">
       <UniqueIdentifier>{099fae6b-ea7e-4c61-b15f-de5176efe874}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Resources">
+      <UniqueIdentifier>{a9c8dc17-3f39-4368-af68-af4438a66014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Resources\Manager">
+      <UniqueIdentifier>{0942bc5a-0db9-4dfb-90cd-4a903318c64d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -24,6 +30,12 @@
     <ClInclude Include="GraphicDevice.h">
       <Filter>Engine\System</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture_Manager.h">
+      <Filter>Engine\Resources\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -37,6 +49,12 @@
     </ClCompile>
     <ClCompile Include="GraphicDevice.cpp">
       <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture_Manager.cpp">
+      <Filter>Engine\Resources\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

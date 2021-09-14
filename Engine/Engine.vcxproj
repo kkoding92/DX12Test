@@ -163,6 +163,8 @@
     <ClInclude Include="EngineStdafx.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Texture_Manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GraphicDevice.cpp" />
@@ -174,6 +176,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Texture_Manager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
