@@ -1,7 +1,6 @@
 #pragma once
 
 class CGraphicDevice;
-
 class CMainApp
 {
 public:
@@ -20,6 +19,7 @@ private:
 
 private:
 	CGraphicDevice*			m_pDeviceClass;
+	CTexture_Manager*		m_pTextureManager;
 
 	LPDIRECT3DDEVICE9		m_pGraphicDevice;
 };

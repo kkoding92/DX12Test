@@ -4,12 +4,14 @@
 CGraphicDevice::CGraphicDevice(void)
 	: m_pSDK(nullptr)
 	, m_pGraphicDev(nullptr)
+	, m_pSprite(nullptr)
 {
 
 }
 
 CGraphicDevice::~CGraphicDevice(void)
 {
+	m_pSprite->Release();
 	m_pGraphicDev->Release();
 	m_pSDK->Release();
 }
@@ -61,6 +63,12 @@ HRESULT CGraphicDevice::Ready_GraphicDevice(HWND hWnd)
 		&Present_Parameters, &m_pGraphicDev))
 		return E_FAIL;
 
+	if (E_FAIL == D3DXCreateSprite(m_pGraphicDev, &m_pSprite))
+	{
+		MessageBox(nullptr, L"m_pSprite Creating Failed", L"SystemError", MB_OK);
+		return E_FAIL;
+	}
+
 	return S_OK;
 }
 
@@ -68,10 +76,13 @@ void CGraphicDevice::Render_Begin(D3DXCOLOR Color)
 {
 	m_pGraphicDev->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL, Color, 1.f, 0);
 	m_pGraphicDev->BeginScene();
+
+	m_pSprite->Begin(D3DXSPRITE_ALPHABLEND);
 }
 
 void CGraphicDevice::Render_End(void)
 {
+	m_pSprite->End();
 	m_pGraphicDev->EndScene();
 	m_pGraphicDev->Present(NULL, NULL, NULL, NULL);
 }
