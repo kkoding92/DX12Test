@@ -35,12 +35,16 @@ HRESULT CMainApp::Ready_MainApp(void)
 	return S_OK;
 }
 
-int CMainApp::Update_MainApp(void)
+int CMainApp::Update_MainApp(const float& fTimeDelta)
 {
+	m_fTimer += fTimeDelta;
+	if (m_fTimer >= 3.f)
+		m_bDraw = true;
+
 	return 0;
 }
 
-void CMainApp::LateUpdate_MainApp(void)
+void CMainApp::LateUpdate_MainApp(const float& fTimeDelta)
 {
 }
 
@@ -48,25 +52,28 @@ void CMainApp::Render_MainApp(void)
 {
 	m_pDeviceClass->Render_Begin(D3DXCOLOR(0.f, 0.f, 1.f, 1.f));
 
-	TEXINFO* pTexInfo = m_pTextureManager->Get_TexInfo(L"cookie");
-	if (nullptr == pTexInfo)
-		return;
+	if (m_bDraw)
+	{
+		TEXINFO* pTexInfo = m_pTextureManager->Get_TexInfo(L"cookie");
+		if (nullptr == pTexInfo)
+			return;
 
-	D3DXMATRIX matScale, matTrans, matWorld;
-	D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
-	D3DXMatrixTranslation(&matTrans, 400.f, 300.f, 0.f);
-	matWorld = matScale * matTrans;
+		D3DXMATRIX matScale, matTrans, matWorld;
+		D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
+		D3DXMatrixTranslation(&matTrans, 400.f, 300.f, 0.f);
+		matWorld = matScale * matTrans;
 
-	float fCenterX = float(pTexInfo->tImageInfo.Width >> 1);
-	float fCenterY = float(pTexInfo->tImageInfo.Height >> 1);
-	D3DXVECTOR3 vCenter = { fCenterX, fCenterY, 0.f };
+		float fCenterX = float(pTexInfo->tImageInfo.Width >> 1);
+		float fCenterY = float(pTexInfo->tImageInfo.Height >> 1);
+		D3DXVECTOR3 vCenter = { fCenterX, fCenterY, 0.f };
 
-	m_pDeviceClass->Get_Sprite()->SetTransform(&matWorld);
-	m_pDeviceClass->Get_Sprite()->Draw(pTexInfo->pTexture, 
-										nullptr, 
-										&vCenter, 
-										nullptr, 
-										D3DCOLOR_ARGB(255, 255, 255, 255));
+		m_pDeviceClass->Get_Sprite()->SetTransform(&matWorld);
+		m_pDeviceClass->Get_Sprite()->Draw(pTexInfo->pTexture,
+			nullptr,
+			&vCenter,
+			nullptr,
+			D3DCOLOR_ARGB(255, 255, 255, 255));
+	}
 
 	m_pDeviceClass->Render_End();
 }

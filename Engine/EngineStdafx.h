@@ -29,5 +29,6 @@ typedef struct tagTextureInfomation
 
 #include "GraphicDevice.h"
 #include "Texture_Manager.h"
+#include "Timer.h"
 
 //void Test();

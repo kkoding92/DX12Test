@@ -36,6 +36,9 @@
     <ClInclude Include="Texture_Manager.h">
       <Filter>Engine\Resources\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Engine\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -55,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="Texture_Manager.cpp">
       <Filter>Engine\Resources\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Engine\System</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

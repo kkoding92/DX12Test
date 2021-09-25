@@ -49,6 +49,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     if (nullptr != pMainApp)
         pMainApp->Ready_MainApp();
 
+    CTimer* pTimer = new CTimer;
+    if (nullptr != pTimer)
+        pTimer->Ready_Timer();
+
     // 기본 메시지 루프입니다:
     while (true)
     {
@@ -64,9 +68,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             }
         }
 
+        pTimer->Update_Timer();
+        float fDeltaTime = pTimer->Get_DeltaTime();
+
         //게임로직 실행
-        pMainApp->Update_MainApp();
-        pMainApp->LateUpdate_MainApp();
+        pMainApp->Update_MainApp(fDeltaTime);
+        pMainApp->LateUpdate_MainApp(fDeltaTime);
         pMainApp->Render_MainApp();
     }
 
@@ -74,6 +81,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     {
         delete pMainApp;
         pMainApp = nullptr;
+    }
+
+    if (nullptr != pTimer)
+    {
+        delete pTimer;
+        pTimer = nullptr;
     }
 
     return (int) msg.wParam;
