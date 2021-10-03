@@ -15,6 +15,9 @@
     <Filter Include="소스 파일\Utils">
       <UniqueIdentifier>{785fb47b-9cb6-43ed-b091-b878e87cf8aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Client\Player">
+      <UniqueIdentifier>{557804ab-4e00-4366-98e7-81ad2c63f4ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -34,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="MainApp.h">
       <Filter>소스 파일\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\Client\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="MainApp.cpp">
       <Filter>소스 파일\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\Client\Player</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

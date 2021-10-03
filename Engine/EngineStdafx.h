@@ -27,8 +27,30 @@ typedef struct tagTextureInfomation
 	D3DXIMAGE_INFO tImageInfo;
 }TEXINFO;
 
+typedef struct tagTransformInfo
+{
+	float fPosX, fPosY;
+	float fSizeX, fSizeY;
+}INFO;
+
 #include "GraphicDevice.h"
 #include "Texture_Manager.h"
 #include "Timer.h"
 
+#include "GameObject.h"
+
 //void Test();
+
+
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
+#ifndef _AFX
+#ifndef DBG_NEW 
+
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ ) 
+#define new DBG_NEW 
+#endif // !_AFX
+
+#endif

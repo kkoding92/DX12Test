@@ -16,6 +16,15 @@
     <Filter Include="Engine\Resources\Manager">
       <UniqueIdentifier>{0942bc5a-0db9-4dfb-90cd-4a903318c64d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\Component">
+      <UniqueIdentifier>{f8041424-5913-4f1b-80c5-0f51b0c02b83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\GameObject">
+      <UniqueIdentifier>{61e5e22a-8124-4177-b77f-ea7f74fcd7f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Component\Transform">
+      <UniqueIdentifier>{b8f903c4-530f-40aa-82ff-65dd6fa1fbf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -39,6 +48,15 @@
     <ClInclude Include="Timer.h">
       <Filter>Engine\System</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Utils\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Utils\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Utils\Component\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -61,6 +79,15 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Engine\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Utils\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Utils\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Utils\Component\Transform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
