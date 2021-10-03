@@ -1,5 +1,6 @@
 #pragma once
 
+class CPlayer;
 class CGraphicDevice;
 class CMainApp
 {
@@ -16,6 +17,8 @@ public:
 
 private:
 	HRESULT		SetUp_Setting(LPDIRECT3DDEVICE9* ppGraphicDev);
+	HRESULT		Add_Resource();
+	void		Add_GameObject();
 
 private:
 	CGraphicDevice*			m_pDeviceClass;
@@ -23,7 +26,6 @@ private:
 
 	LPDIRECT3DDEVICE9		m_pGraphicDevice;
 
-	float					m_fTimer = 0.f;
-	bool					m_bDraw = false;
+	CPlayer*				m_pPlayer;
 };
 

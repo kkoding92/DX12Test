@@ -38,6 +38,9 @@ typedef struct tagTransformInfo
 #include "Timer.h"
 
 #include "GameObject.h"
+#include "Transform.h"
+
+
 
 //void Test();
 

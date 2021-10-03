@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MainApp.h"
+#include "Player.h"
 
 CMainApp::CMainApp(void)
 	:m_pDeviceClass(nullptr)
@@ -26,8 +27,10 @@ HRESULT CMainApp::Ready_MainApp(void)
 	if (nullptr == m_pTextureManager)
 		return E_FAIL;
 
-	if (E_FAIL == m_pTextureManager->Insert_Texture(L"../Texture/cookie.png", L"cookie"))
+	if (E_FAIL == Add_Resource())
 		return E_FAIL;
+
+	Add_GameObject();
 
 	m_pGraphicDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
 	m_pGraphicDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
@@ -37,49 +40,32 @@ HRESULT CMainApp::Ready_MainApp(void)
 
 int CMainApp::Update_MainApp(const float& fTimeDelta)
 {
-	m_fTimer += fTimeDelta;
-	if (m_fTimer >= 3.f)
-		m_bDraw = true;
-
+	m_pPlayer->Update_GameObject(fTimeDelta);
 	return 0;
 }
 
 void CMainApp::LateUpdate_MainApp(const float& fTimeDelta)
 {
+	m_pPlayer->LateUpdate_GameObject(fTimeDelta);
 }
 
 void CMainApp::Render_MainApp(void)
 {
 	m_pDeviceClass->Render_Begin(D3DXCOLOR(0.f, 0.f, 1.f, 1.f));
 
-	if (m_bDraw)
-	{
-		TEXINFO* pTexInfo = m_pTextureManager->Get_TexInfo(L"cookie");
-		if (nullptr == pTexInfo)
-			return;
-
-		D3DXMATRIX matScale, matTrans, matWorld;
-		D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
-		D3DXMatrixTranslation(&matTrans, 400.f, 300.f, 0.f);
-		matWorld = matScale * matTrans;
-
-		float fCenterX = float(pTexInfo->tImageInfo.Width >> 1);
-		float fCenterY = float(pTexInfo->tImageInfo.Height >> 1);
-		D3DXVECTOR3 vCenter = { fCenterX, fCenterY, 0.f };
-
-		m_pDeviceClass->Get_Sprite()->SetTransform(&matWorld);
-		m_pDeviceClass->Get_Sprite()->Draw(pTexInfo->pTexture,
-			nullptr,
-			&vCenter,
-			nullptr,
-			D3DCOLOR_ARGB(255, 255, 255, 255));
-	}
+	m_pPlayer->Render_GameObject();
 
 	m_pDeviceClass->Render_End();
 }
 
 void CMainApp::Release_MainApp(void)
 {
+	if (nullptr != m_pPlayer)
+	{
+		delete m_pPlayer;
+		m_pPlayer = nullptr;
+	}
+
 	if (nullptr != m_pDeviceClass)
 	{
 		delete m_pDeviceClass;
@@ -103,4 +89,23 @@ HRESULT CMainApp::SetUp_Setting(LPDIRECT3DDEVICE9* ppGraphicDev)
 	(*ppGraphicDev)->AddRef();
 
 	return S_OK;
+}
+
+HRESULT CMainApp::Add_Resource()
+{
+	if (E_FAIL == m_pTextureManager->Insert_Texture(L"../Texture/cookie.png", L"cookie"))
+		return E_FAIL;
+
+	return S_OK;
+}
+
+void CMainApp::Add_GameObject()
+{
+	m_pPlayer = new CPlayer(m_pGraphicDevice);
+	if (nullptr != m_pPlayer)
+	{
+		m_pPlayer->Start_GameObject();
+		m_pPlayer->Set_DeviceClass(m_pDeviceClass);
+		m_pPlayer->Set_TexInfo(m_pTextureManager->Get_TexInfo(L"cookie"));
+	}
 }
