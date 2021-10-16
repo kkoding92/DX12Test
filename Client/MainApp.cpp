@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MainApp.h"
 #include "Player.h"
+#include "Jelly.h"
 
 CMainApp::CMainApp(void)
 	:m_pDeviceClass(nullptr)
@@ -41,12 +42,14 @@ HRESULT CMainApp::Ready_MainApp(void)
 int CMainApp::Update_MainApp(const float& fTimeDelta)
 {
 	m_pPlayer->Update_GameObject(fTimeDelta);
+	m_pJelly->Update_GameObject(fTimeDelta);
 	return 0;
 }
 
 void CMainApp::LateUpdate_MainApp(const float& fTimeDelta)
 {
 	m_pPlayer->LateUpdate_GameObject(fTimeDelta);
+	m_pJelly->LateUpdate_GameObject(fTimeDelta);
 }
 
 void CMainApp::Render_MainApp(void)
@@ -54,6 +57,7 @@ void CMainApp::Render_MainApp(void)
 	m_pDeviceClass->Render_Begin(D3DXCOLOR(0.f, 0.f, 1.f, 1.f));
 
 	m_pPlayer->Render_GameObject();
+	m_pJelly->Render_GameObject();
 
 	m_pDeviceClass->Render_End();
 }
@@ -64,6 +68,12 @@ void CMainApp::Release_MainApp(void)
 	{
 		delete m_pPlayer;
 		m_pPlayer = nullptr;
+	}
+
+	if (nullptr != m_pJelly)
+	{
+		delete m_pJelly;
+		m_pJelly = nullptr;
 	}
 
 	if (nullptr != m_pDeviceClass)
@@ -96,6 +106,9 @@ HRESULT CMainApp::Add_Resource()
 	if (E_FAIL == m_pTextureManager->Insert_Texture(L"../Texture/cookie.png", L"cookie"))
 		return E_FAIL;
 
+	if (E_FAIL == m_pTextureManager->Insert_Texture(L"../Texture/jelly.png", L"jelly"))
+		return E_FAIL;
+
 	return S_OK;
 }
 
@@ -107,5 +120,13 @@ void CMainApp::Add_GameObject()
 		m_pPlayer->Start_GameObject();
 		m_pPlayer->Set_DeviceClass(m_pDeviceClass);
 		m_pPlayer->Set_TexInfo(m_pTextureManager->Get_TexInfo(L"cookie"));
+	}
+
+	m_pJelly = new CJelly(m_pGraphicDevice);
+	if (nullptr != m_pJelly)
+	{
+		m_pJelly->Start_GameObject();
+		m_pJelly->Set_DeviceClass(m_pDeviceClass);
+		m_pJelly->Set_TexInfo(m_pTextureManager->Get_TexInfo(L"jelly"));
 	}
 }

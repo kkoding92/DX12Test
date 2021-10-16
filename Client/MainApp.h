@@ -1,6 +1,7 @@
 #pragma once
 
 class CPlayer;
+class CJelly;
 class CGraphicDevice;
 class CMainApp
 {
@@ -27,5 +28,6 @@ private:
 	LPDIRECT3DDEVICE9		m_pGraphicDevice;
 
 	CPlayer*				m_pPlayer;
+	CJelly*					m_pJelly;
 };
 

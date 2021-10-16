@@ -28,6 +28,12 @@ void CTransform::Set_Scale(float fX, float fY)
 	m_tInfo.fSizeY = fY;
 }
 
+void CTransform::Move_Pos(D3DXVECTOR2 vDir, const float& fMoveSpeed, const float& fTimeDelta)
+{
+	m_tInfo.fPosX += vDir.x * fTimeDelta * fMoveSpeed;
+	m_tInfo.fPosY += vDir.y * fTimeDelta * fMoveSpeed;
+}
+
 D3DXMATRIX CTransform::Get_WorldMatrix()
 {
 	return m_matWorld;

@@ -19,6 +19,20 @@ void CPlayer::Start_GameObject(void)
 
 int CPlayer::Update_GameObject(const float& fTimeDelta)
 {
+	D3DXVECTOR2 vDir = { 0.f, 0.f };
+
+	if (GetAsyncKeyState('W') & 0x8000)
+		vDir = { 0.f, -1.f };
+	else if (GetAsyncKeyState('S') & 0x8000)
+		vDir = { 0.f, 1.f };
+	else if (GetAsyncKeyState('A') & 0x8000)
+		vDir = { -1.f, 0.f };
+	else if (GetAsyncKeyState('D') & 0x8000)
+		vDir = { 1.f, 0.f };
+
+	m_pTransform->Move_Pos(vDir, 500.f, fTimeDelta);
+
+
 	CGameObject::Update_GameObject(fTimeDelta);
 
 	return 0;

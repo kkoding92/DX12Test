@@ -12,6 +12,7 @@ public:
 	INFO			Get_Info(void);
 	void			Set_Position(float fX, float fY);
 	void			Set_Scale(float fX, float fY);
+	void			Move_Pos(D3DXVECTOR2 vDir, const float& fMoveSpeed, const float& fTimeDelta);
 
 	D3DXMATRIX		Get_WorldMatrix();
 

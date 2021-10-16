@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Jelly.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Jelly.cpp" />
     <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
