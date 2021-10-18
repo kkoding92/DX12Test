@@ -2,9 +2,10 @@
 #include "Texture_Manager.h"
 #include "Texture.h"
 
-CTexture_Manager::CTexture_Manager(LPDIRECT3DDEVICE9 pGraphicDevice)
+CTexture_Manager* CTexture_Manager::m_pInstance = nullptr;
+
+CTexture_Manager::CTexture_Manager()
 {
-	m_pGraphicDevice = pGraphicDevice;
 }
 
 CTexture_Manager::~CTexture_Manager()
@@ -29,7 +30,7 @@ HRESULT CTexture_Manager::Insert_Texture(const wstring& wstrFilePath, const wstr
 	{
 		CTexture* pTexture = new CTexture;
 
-		if (FAILED(pTexture->Insert_Texture(m_pGraphicDevice, wstrFilePath)))
+		if (FAILED(pTexture->Insert_Texture(CGraphicDevice::Get_Instance()->Get_GraphicDev(), wstrFilePath)))
 		{
 			MessageBox(nullptr, L"Insert Texture Failed", L"SystemError", MB_OK);
 			return E_FAIL;

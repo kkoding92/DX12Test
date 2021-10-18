@@ -1,7 +1,6 @@
 #pragma once
 
-class CPlayer;
-class CJelly;
+class CMainScene;
 class CGraphicDevice;
 class CMainApp
 {
@@ -19,7 +18,6 @@ public:
 private:
 	HRESULT		SetUp_Setting(LPDIRECT3DDEVICE9* ppGraphicDev);
 	HRESULT		Add_Resource();
-	void		Add_GameObject();
 
 private:
 	CGraphicDevice*			m_pDeviceClass;
@@ -27,7 +25,7 @@ private:
 
 	LPDIRECT3DDEVICE9		m_pGraphicDevice;
 
-	CPlayer*				m_pPlayer;
-	CJelly*					m_pJelly;
+	CMainScene*				m_pScene;
 };
+
 

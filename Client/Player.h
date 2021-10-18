@@ -12,8 +12,8 @@ private:
 	HRESULT			Add_Component(void);
 
 public:
-	void			Set_TexInfo(TEXINFO* pTexInfo) { m_pTexInfo = pTexInfo; }
-	void			Set_DeviceClass(CGraphicDevice* pGraphicDevice) { m_pDeviceClass = pGraphicDevice; }
+	//void			Set_TexInfo(TEXINFO* pTexInfo) { m_pTexInfo = pTexInfo; }
+	//void			Set_DeviceClass(CGraphicDevice* pGraphicDevice) { m_pDeviceClass = pGraphicDevice; }
 
 public:
 	void			Start_GameObject(void) override;

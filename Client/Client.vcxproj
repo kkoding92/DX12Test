@@ -159,6 +159,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Jelly.h" />
     <ClInclude Include="MainApp.h" />
+    <ClInclude Include="MainScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Jelly.cpp" />
     <ClCompile Include="MainApp.cpp" />
+    <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

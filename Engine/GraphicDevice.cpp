@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "GraphicDevice.h"
 
+CGraphicDevice* CGraphicDevice::m_pInstance = nullptr;
+
 CGraphicDevice::CGraphicDevice(void)
 	: m_pSDK(nullptr)
 	, m_pGraphicDev(nullptr)

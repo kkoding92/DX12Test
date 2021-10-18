@@ -17,8 +17,8 @@ private:
 	void			Change_State(void);
 
 public:
-	void			Set_TexInfo(TEXINFO* pTexInfo) { m_pTexInfo = pTexInfo; }
-	void			Set_DeviceClass(CGraphicDevice* pGraphicDevice) { m_pDeviceClass = pGraphicDevice; }
+	void			Set_InitPosition(float fX, float fY);
+	//void			Set_TexInfo(TEXINFO* pTexInfo) { m_pTexInfo = pTexInfo; }
 
 public:
 	void			Start_GameObject(void) override;

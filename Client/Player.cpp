@@ -12,6 +12,9 @@ CPlayer::~CPlayer(void)
 
 void CPlayer::Start_GameObject(void)
 {
+	m_pDeviceClass = CGraphicDevice::Get_Instance();
+	m_pTexInfo = CTexture_Manager::Get_Instance()->Get_TexInfo(L"cookie");
+
 	Add_Component();
 	m_pTransform->Set_Scale(1.f, 1.f);
 	m_pTransform->Set_Position(400.f, 300.f);
@@ -52,8 +55,8 @@ void CPlayer::Render_GameObject(void)
 	D3DXVECTOR3 vCenter = { fCenterX, fCenterY, 0.f };
 	
 	D3DXMATRIX matWorld = m_pTransform->Get_WorldMatrix();
-	m_pDeviceClass->Get_Sprite()->SetTransform(&matWorld);
-	m_pDeviceClass->Get_Sprite()->Draw(m_pTexInfo->pTexture,
+	CGraphicDevice::Get_Instance()->Get_Sprite()->SetTransform(&matWorld);
+	CGraphicDevice::Get_Instance()->Get_Sprite()->Draw(m_pTexInfo->pTexture,
 		nullptr,
 		&vCenter,
 		nullptr,

@@ -39,7 +39,7 @@ typedef struct tagTransformInfo
 
 #include "GameObject.h"
 #include "Transform.h"
-
+#include "Scene.h"
 
 
 //void Test();

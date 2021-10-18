@@ -12,12 +12,15 @@ CJelly::~CJelly(void)
 
 void CJelly::Start_GameObject(void)
 {
+	m_pDeviceClass = CGraphicDevice::Get_Instance();
+	m_pTexInfo = CTexture_Manager::Get_Instance()->Get_TexInfo(L"jelly");
+
 	Add_Component();
 
 	m_pTransform->Set_Scale(1.f, 1.f);
-	m_pTransform->Set_Position(500.f, 300.f);
+	//m_pTransform->Set_Position(500.f, 300.f);
 
-	m_fInitY = m_pTransform->Get_Info().fPosY;
+	//m_fInitY = m_pTransform->Get_Info().fPosY;
 	m_fAmountOfMovement = 100.f;
 
 	m_eCurState = JELLY_STATE::IDLE;
@@ -117,4 +120,10 @@ void CJelly::Change_State(void)
 		}
 		m_eCurState = m_eNextState;
 	}
+}
+
+void CJelly::Set_InitPosition(float fX, float fY)
+{
+	m_pTransform->Set_Position(fX, fY);
+	m_fInitY = m_pTransform->Get_Info().fPosY;
 }
