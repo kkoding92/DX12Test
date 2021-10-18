@@ -61,6 +61,8 @@ void CPlayer::Render_GameObject(void)
 		&vCenter,
 		nullptr,
 		D3DCOLOR_ARGB(255, 255, 255, 255));
+
+	m_pCollider->Render_Collider();
 }
 
 HRESULT CPlayer::Add_Component(void)
@@ -70,6 +72,14 @@ HRESULT CPlayer::Add_Component(void)
 	pComponent = m_pTransform = CTransform::Create();
 	if (nullptr != pComponent)
 		m_mapComponents.emplace(make_pair("TransformComponent", pComponent));
+
+	pComponent = m_pCollider = CCollider::Create();
+	if (nullptr != pComponent)
+	{
+		m_pCollider->Set_Owner(this);
+		m_pCollider->Init_ColSize(100.f);
+		m_mapComponents.emplace(make_pair("ColliderComponent", pComponent));
+	}
 
 	return S_OK;
 }

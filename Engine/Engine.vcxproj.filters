@@ -28,6 +28,9 @@
     <Filter Include="Utils\Scene">
       <UniqueIdentifier>{cf6acf2f-f123-4890-a19a-9a78b116e2a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\Component\Collider">
+      <UniqueIdentifier>{50598d3a-c0c6-4772-a352-f56e1d449320}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -63,6 +66,9 @@
     <ClInclude Include="Scene.h">
       <Filter>Utils\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Utils\Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -97,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Utils\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Utils\Component\Collider</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

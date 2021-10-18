@@ -10,6 +10,7 @@ public:
 
 public:
 	CComponent*		Get_Component(string strTag);
+	void			Set_Dead() { m_bDead = true; }
 
 public:
 	virtual void			Start_GameObject(void);
@@ -20,5 +21,7 @@ public:
 protected:
 	LPDIRECT3DDEVICE9			m_pGraphicDev;
 	map<string, CComponent*>	m_mapComponents; // 컴포넌트를 담을 컨테이너
+
+	bool						m_bDead = false;
 };
 

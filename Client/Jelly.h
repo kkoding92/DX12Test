@@ -2,6 +2,7 @@
 
 class CGraphicDevice;
 class CTransform;
+class CCollider;
 class CJelly : public CGameObject
 {
 public:
@@ -18,7 +19,6 @@ private:
 
 public:
 	void			Set_InitPosition(float fX, float fY);
-	//void			Set_TexInfo(TEXINFO* pTexInfo) { m_pTexInfo = pTexInfo; }
 
 public:
 	void			Start_GameObject(void) override;
@@ -30,6 +30,7 @@ private:
 	CGraphicDevice* m_pDeviceClass; 
 	TEXINFO*		m_pTexInfo;	
 	CTransform*		m_pTransform;	
+	CCollider*		m_pCollider;
 
 	JELLY_STATE		m_eCurState;
 	JELLY_STATE		m_eNextState;

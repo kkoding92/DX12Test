@@ -7,6 +7,7 @@ public:
 
 private:
 	void			Create_GameObject();
+	void			Check_Collision();
 
 public:
 	void			Start_Scene(void) override;

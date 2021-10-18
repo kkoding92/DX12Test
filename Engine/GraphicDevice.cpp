@@ -7,12 +7,14 @@ CGraphicDevice::CGraphicDevice(void)
 	: m_pSDK(nullptr)
 	, m_pGraphicDev(nullptr)
 	, m_pSprite(nullptr)
+	, m_pLine(nullptr)
 {
 
 }
 
 CGraphicDevice::~CGraphicDevice(void)
 {
+	m_pLine->Release();
 	m_pSprite->Release();
 	m_pGraphicDev->Release();
 	m_pSDK->Release();
@@ -68,6 +70,12 @@ HRESULT CGraphicDevice::Ready_GraphicDevice(HWND hWnd)
 	if (E_FAIL == D3DXCreateSprite(m_pGraphicDev, &m_pSprite))
 	{
 		MessageBox(nullptr, L"m_pSprite Creating Failed", L"SystemError", MB_OK);
+		return E_FAIL;
+	}
+
+	if (E_FAIL == D3DXCreateLine(m_pGraphicDev, &m_pLine))
+	{
+		MessageBox(nullptr, L"m_pLine Creating Failed", L"SystemError", MB_OK);
 		return E_FAIL;
 	}
 

@@ -2,6 +2,7 @@
 
 class CGraphicDevice;
 class CTransform;
+class CCollider;
 class CPlayer : public CGameObject
 {
 public:
@@ -26,5 +27,6 @@ private:
 	TEXINFO*			m_pTexInfo;		// 출력할 텍스처 
 
 	CTransform*			m_pTransform;	// Transform 컴포넌트
+	CCollider*			m_pCollider;	// Collider 컴포넌트
 };
 

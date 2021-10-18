@@ -35,6 +35,33 @@ void CMainScene::Create_GameObject()
 	}
 }
 
+void CMainScene::Check_Collision()
+{
+	CGameObject* pPlayer = Get_Player();
+	CCollider* pPlayerColliderCom = dynamic_cast<CCollider*>(pPlayer->Get_Component("ColliderComponent"));
+	
+	list<CGameObject*> pJellyList = Get_ObjectList(CScene::OBJ_JELLY);
+	CCollider* pJellyColliderCom = nullptr;
+
+	RECT rc = {};
+
+	for (auto iter : pJellyList)
+	{
+		pJellyColliderCom = dynamic_cast<CCollider*>(iter->Get_Component("ColliderComponent"));
+
+		if (pJellyColliderCom == nullptr)
+			continue;
+
+		RECT pPlayerRect = pPlayerColliderCom->Get_Rect();
+		RECT pJellyRect = pJellyColliderCom->Get_Rect();
+
+		if (IntersectRect(&rc, &pPlayerRect, &pJellyRect))
+		{
+			iter->Set_Dead();
+		}
+	}
+}
+
 void CMainScene::Start_Scene(void)
 {
 	Create_GameObject();
@@ -49,6 +76,8 @@ int CMainScene::Update_Scene(const float& fTimeDelta)
 void CMainScene::LateUpdate_Scene(const float& fTimeDelta)
 {
 	CScene::LateUpdate_Scene(fTimeDelta);
+
+	Check_Collision();
 }
 
 void CMainScene::Render_Scene(void)

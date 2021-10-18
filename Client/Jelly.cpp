@@ -29,6 +29,9 @@ void CJelly::Start_GameObject(void)
 
 int CJelly::Update_GameObject(const float& fTimeDelta)
 {
+	if (m_bDead)
+		return -1;
+
 	Update_State(fTimeDelta);
 	
 	CGameObject::Update_GameObject(fTimeDelta);
@@ -57,6 +60,8 @@ void CJelly::Render_GameObject(void)
 		&vCenter,
 		nullptr,
 		D3DCOLOR_ARGB(255, 255, 255, 255));
+
+	m_pCollider->Render_Collider();
 }
 
 HRESULT CJelly::Add_Component(void)
@@ -66,6 +71,15 @@ HRESULT CJelly::Add_Component(void)
 	pComponent = m_pTransform = CTransform::Create();
 	if (nullptr != pComponent)
 		m_mapComponents.emplace(make_pair("TransformComponent", pComponent));
+
+
+	pComponent = m_pCollider = CCollider::Create();
+	if (nullptr != pComponent)
+	{
+		m_pCollider->Set_Owner(this);
+		m_pCollider->Init_ColSize(40.f);
+		m_mapComponents.emplace(make_pair("ColliderComponent", pComponent));
+	}
 
 	return S_OK;
 }
