@@ -10,6 +10,7 @@ public:
 
 public:
 	CJelly(LPDIRECT3DDEVICE9 pGraphicDev);
+	CJelly(const CJelly& rhs);
 	virtual ~CJelly(void);
 
 private:
@@ -25,6 +26,9 @@ public:
 	int				Update_GameObject(const float& fTimeDelta) override;
 	void			LateUpdate_GameObject(const float& fTimeDelta) override;
 	void			Render_GameObject(void) override;
+
+public:
+	CGameObject*	Clone(void) override;
 
 private:
 	CGraphicDevice* m_pDeviceClass; 

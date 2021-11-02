@@ -65,6 +65,11 @@ void CPlayer::Render_GameObject(void)
 	m_pCollider->Render_Collider();
 }
 
+CGameObject* CPlayer::Clone(void)
+{
+	return nullptr;
+}
+
 HRESULT CPlayer::Add_Component(void)
 {
 	CComponent* pComponent = nullptr;

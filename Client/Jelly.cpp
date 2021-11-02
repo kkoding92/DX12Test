@@ -6,6 +6,12 @@ CJelly::CJelly(LPDIRECT3DDEVICE9 pGraphicDev)
 {
 }
 
+CJelly::CJelly(const CJelly& rhs)
+	: CGameObject(rhs.m_pGraphicDev)
+	, m_pDeviceClass(rhs.m_pDeviceClass)
+{
+}
+
 CJelly::~CJelly(void)
 {
 }
@@ -62,6 +68,11 @@ void CJelly::Render_GameObject(void)
 		D3DCOLOR_ARGB(255, 255, 255, 255));
 
 	m_pCollider->Render_Collider();
+}
+
+CGameObject* CJelly::Clone(void)
+{
+	return new CJelly(*this);
 }
 
 HRESULT CJelly::Add_Component(void)

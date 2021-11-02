@@ -53,6 +53,9 @@
     <ClInclude Include="MainScene.h">
       <Filter>소스 파일\Client\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="KingJelly.h">
+      <Filter>소스 파일\Client\Jelly</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="MainScene.cpp">
       <Filter>소스 파일\Client\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="KingJelly.cpp">
+      <Filter>소스 파일\Client\Jelly</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

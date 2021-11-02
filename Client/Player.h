@@ -13,14 +13,13 @@ private:
 	HRESULT			Add_Component(void);
 
 public:
-	//void			Set_TexInfo(TEXINFO* pTexInfo) { m_pTexInfo = pTexInfo; }
-	//void			Set_DeviceClass(CGraphicDevice* pGraphicDevice) { m_pDeviceClass = pGraphicDevice; }
-
-public:
 	void			Start_GameObject(void) override;
 	int				Update_GameObject(const float& fTimeDelta) override;
 	void			LateUpdate_GameObject(const float& fTimeDelta) override;
 	void			Render_GameObject(void) override;
+
+public:
+	CGameObject*	Clone(void) override;
 
 private:
 	CGraphicDevice*		m_pDeviceClass; // 출력에 사용할 GraphicDevice 클래스
