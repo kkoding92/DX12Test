@@ -123,5 +123,8 @@ HRESULT CMainApp::Add_Resource()
 	if (E_FAIL == m_pTextureManager->Insert_Texture(L"../Texture/king_jelly.png", L"king_jelly"))
 		return E_FAIL;
 
+	if (E_FAIL == m_pTextureManager->Insert_Texture(L"../Texture/background.png", L"bg"))
+		return E_FAIL;
+
 	return S_OK;
 }

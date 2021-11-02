@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Jelly.h"
 #include "KingJelly.h"
+#include "Background.h"
 
 CMainScene::CMainScene()
 {
@@ -18,6 +19,13 @@ void CMainScene::Create_GameObject()
 {
 	CGameObject* pObj = nullptr;
 	LPDIRECT3DDEVICE9 pGraphicDevice = CGraphicDevice::Get_Instance()->Get_GraphicDev();
+
+	pObj = new CBackground(pGraphicDevice);
+	if (nullptr != pObj)
+	{
+		pObj->Start_GameObject();
+		Add_GameObject(OBJ_BG, pObj);
+	}
 
 	pObj = new CPlayer(pGraphicDevice);
 	if (nullptr != pObj)
@@ -105,4 +113,14 @@ void CMainScene::LateUpdate_Scene(const float& fTimeDelta)
 void CMainScene::Render_Scene(void)
 {
 	CScene::Render_Scene();
+
+	RECT rc = { 30, 30, 300, 200 };
+	TCHAR szBuf[MAX_PATH] = L"";
+	swprintf_s(szBuf, L"획득 점수 : %d", m_iJellyCount);
+	CGraphicDevice::Get_Instance()->Get_Font()->DrawTextW(nullptr, 
+															szBuf,								//출력 문자열
+															lstrlen(szBuf),						//문자열 길이
+															&rc,								//출력 영역
+															0, 
+															D3DCOLOR_ARGB(255, 255, 255, 255));	//글자 색
 }

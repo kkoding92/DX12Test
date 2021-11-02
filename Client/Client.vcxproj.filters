@@ -24,6 +24,9 @@
     <Filter Include="소스 파일\Client\Scene">
       <UniqueIdentifier>{3e38ccca-aade-4eb1-8756-8f7423a041a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Client\Background">
+      <UniqueIdentifier>{bf16cbfe-d97e-4720-8706-b035cbafe3f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="KingJelly.h">
       <Filter>소스 파일\Client\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>소스 파일\Client\Background</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="KingJelly.cpp">
       <Filter>소스 파일\Client\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>소스 파일\Client\Background</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

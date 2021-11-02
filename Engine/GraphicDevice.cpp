@@ -8,6 +8,7 @@ CGraphicDevice::CGraphicDevice(void)
 	, m_pGraphicDev(nullptr)
 	, m_pSprite(nullptr)
 	, m_pLine(nullptr)
+	, m_pFont(nullptr)
 {
 
 }
@@ -15,6 +16,7 @@ CGraphicDevice::CGraphicDevice(void)
 CGraphicDevice::~CGraphicDevice(void)
 {
 	m_pLine->Release();
+	m_pFont->Release();
 	m_pSprite->Release();
 	m_pGraphicDev->Release();
 	m_pSDK->Release();
@@ -76,6 +78,20 @@ HRESULT CGraphicDevice::Ready_GraphicDevice(HWND hWnd)
 	if (E_FAIL == D3DXCreateLine(m_pGraphicDev, &m_pLine))
 	{
 		MessageBox(nullptr, L"m_pLine Creating Failed", L"SystemError", MB_OK);
+		return E_FAIL;
+	}
+
+	D3DXFONT_DESCW tFontInfo;
+	ZeroMemory(&tFontInfo, sizeof(D3DXFONT_DESCW));
+	tFontInfo.Height = 20;	// ³ôÀÌ
+	tFontInfo.Width = 10;	// Æø
+	tFontInfo.Weight = FW_LIGHT; //±½±â
+	tFontInfo.CharSet = HANGEUL_CHARSET;
+	lstrcpy(tFontInfo.FaceName, L"³ª´®°íµñ"); //±Û¾¾Ã¼
+
+	if (E_FAIL == D3DXCreateFontIndirect(m_pGraphicDev, &tFontInfo, &m_pFont))
+	{
+		MessageBox(nullptr, L"m_pFont Creating Failed", L"SystemError", MB_OK);
 		return E_FAIL;
 	}
 
